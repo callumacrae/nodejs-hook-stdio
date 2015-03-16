@@ -1,6 +1,6 @@
 {
   "name": "hook-stdio",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Hook process stdout and stderr.",
   "author": "James Davidson <jsdavo@gmail.com>",
   "contributors": [
