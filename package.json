@@ -15,12 +15,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Papercloud/nodejs-hook-stdio"
+    "url": "https://github.com/callumacrae/nodejs-hook-stdio"
   },
   "bugs": {
-    "url": "https://github.com/Papercloud/nodejs-hook-stdio/issues"
+    "url": "https://github.com/callumacrae/nodejs-hook-stdio/issues"
   },
-  "homepage": "https://github.com/Papercloud/nodejs-hook-stdio",
+  "homepage": "https://github.com/callumacrae/nodejs-hook-stdio",
   "main": "index.js",
   "devDependencies": {
     "faucet": "0.0.1",
