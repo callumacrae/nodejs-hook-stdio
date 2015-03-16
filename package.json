@@ -2,21 +2,31 @@
   "name": "hook-stdio",
   "version": "0.0.1",
   "description": "Hook process stdout and stderr.",
-  "author": {
-    "name": "James Davidson",
-    "email": "jsdavo@gmail.com"
-  },
+  "author": "James Davidson <jsdavo@gmail.com>",
+  "contributors": [
+    "Callum Macrae <callum@macr.ae>"
+  ],
   "keywords": [
     "stderr",
     "stdout",
     "stream",
     "log",
-	"hook"
+    "hook"
   ],
-  "dependencies" : {
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Papercloud/nodejs-hook-stdio"
+  },
+  "bugs": {
+    "url": "https://github.com/Papercloud/nodejs-hook-stdio/issues"
+  },
+  "homepage": "https://github.com/Papercloud/nodejs-hook-stdio",
+  "main": "index.js",
+  "devDependencies": {
+    "faucet": "0.0.1",
+    "tape": "^3.5.0"
+  },
+  "scripts": {
+    "test": "node ./test.js | faucet"
   }
 }
