@@ -1,8 +1,9 @@
-#Intro
+# nodejs-hook-stdio [![Build Status](https://travis-ci.org/callumacrae/nodejs-hook-stdio.svg)](https://travis-ci.org/callumacrae/nodejs-hook-stdio)
 
 A simplified version of a great library: https://github.com/dpweb/loghooks-node. Allows you to grab the Node global process.stdout and process.stderr pipes and listen in.
 
-# Docs
+## Docs
+
 The API is straightforward. Using either the stderr or the stdout function of the hook library, just pass in a handler function. The optional second argument is a true/false which controls whether or not the data is copied to the original destination or completely intercepted.
 
         //  Import the library.
