@@ -1,33 +1,33 @@
 'use strict';
 
-module.exports = {
-    stderr: function hookStderr(callback, addl) {
-        var oldstderr = process.stderr.write;
+// used to generate the two exported hook functions
+function hookWrite(stream) {
 
-        process.stderr.write = function hookedStderrWrite(string, encoding, fd) {
-			if (addl) {
-				oldstderr.apply(process.stderr, arguments);
-			}
-			callback(string, encoding, fd);
-		};
+    // return a hook function for the stream
+    return function hook(callback, passthru) {
+        var write = stream.write;
 
-		return function () {
-			process.stderr.write = oldstderr;
-		};
-    },
+        // when `passthru` is true send the content to stream as well.
+        if (passthru) {
+            stream.write = function hookedWrite(data, encoding, cb) {
+                write.call(stream, data, encoding, cb);
+                return callback(data, encoding, cb);
+            }
+        }
 
-    stdout: function hookStdout(callback, addl) {
-        var oldstdout = process.stdout.write;
+        // when `passthru` is false use the callback directly
+        else {
+          stream.write = callback;
+        }
 
-        process.stdout.write = function hookedStdoutWrite(string, encoding, fd) {
-			if (addl) {
-				oldstdout.apply(process.stdout, arguments);
-			}
-			callback(string, encoding, fd);
-		};
-
-		return function () {
-			process.stdout.write = oldstdout;
-		};
+        return function unhook() {
+          stream.write = write;
+        }
     }
+}
+
+module.exports = {
+    // generate hook functions by providing the stream to hook
+    stderr: hookWrite(process.stderr),
+    stdout: hookWrite(process.stdout)
 };
